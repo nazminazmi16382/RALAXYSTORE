@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ralahy Store • Top Up & Jasa Digital</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f5f7fb;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .store-container {
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* card utama seperti screenshot pertama */
+        .card-store {
+            background: white;
+            border-radius: 32px 32px 28px 28px;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.15), 0 5px 12px rgba(0,0,0,0.05);
+            overflow: hidden;
+            padding: 24px 20px 30px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        /* header RALAHY STORE */
+        .brand-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .brand-header h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(145deg, #2b1c0f, #4a2e1a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 2px 2px 0 #f5e7d3;
+        }
+
+        .brand-header .sub-brand {
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: #ffeecc;
+            padding: 6px 18px;
+            border-radius: 40px;
+            color: #5f3b1c;
+            border: 1px dashed #d4a373;
+            margin-top: 6px;
+        }
+
+        /* LAYANAN KAMI — list produk */
+        .services-section {
+            background: #fefcf6;
+            border-radius: 24px;
+            padding: 20px 16px;
+            margin: 18px 0;
+            border: 1px solid #ffe5b4;
+            box-shadow: inset 0 2px 6px rgba(255,215,140,0.3);
+        }
+
+        .services-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2e1b0e;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 18px;
+            border-left: 7px solid #f4a261;
+            padding-left: 14px;
+        }
+
+        .services-title i {
+            color: #c47e3a;
+            font-size: 1.8rem;
+        }
+
+        /* list dua kolom seperti di screenshot: ada bullet / centang */
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px 18px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            background: white;
+            padding: 8px 12px;
+            border-radius: 50px;
+            box-shadow: 0 2px 6px #ffe3c9;
+            color: #38220f;
+            border: 1px solid #ffd9b0;
+            transition: all 0.15s;
+        }
+
+        .service-item i {
+            color: #d88c3d;
+            font-size: 1.1rem;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .service-item span {
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* badge fast respon dll */
+        .badge-panel {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 16px;
+            margin: 25px 0 20px;
+        }
+
+        .badge {
+            background: #1f3a3f;
+            color: white;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 6px 0 #0a1a1e;
+        }
+
+        .badge i {
+            font-size: 1.1rem;
+        }
+
+        .badge.green {
+            background: #2b6e5c;
+            box-shadow: 0 6px 0 #1b453a;
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 18px;
+            font-weight: 600;
+            background: #eef2f5;
+            padding: 14px 16px;
+            border-radius: 44px;
+            margin: 20px 0 18px;
+            color: #263238;
+        }
+
+        .payment-methods i {
+            font-size: 1.3rem;
+            color: #145a32;
+        }
+
+        .payment-methods span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* CTA admin */
+        .admin-cta {
+            background: #faeedc;
+            border-radius: 40px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 22px 0 16px;
+            border: 2px solid #e6c99c;
+        }
+
+        .admin-cta .left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-cta .left i {
+            font-size: 2.2rem;
+            color: #b45f2b;
+        }
+
+        .admin-cta .left h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .admin-cta .btn-chat {
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 5px 0 #1b8a4e;
+            transition: 0.1s ease;
+            cursor: default;
+        }
+
+        /* daftar nomor HP */
+        .contact-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            background: #f1ede5;
+            border-radius: 30px;
+            padding: 18px 16px;
+            margin-top: 12px;
+            border: 1px solid #d2b48c;
+        }
+
+        .contact-item {
+            background: white;
+            border-radius: 40px;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #2e2e2e;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e2cba4;
+            word-break: break-all;
+        }
+
+        .contact-item i {
+            color: #2a6f4b;
+            font-size: 0.9rem;
+        }
+
+        /* bagian kedua — seperti golrox.com dengan rating & kategori */
+        .card-golrox {
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 30px -10px rgba(0,20,30,0.2);
+            padding: 24px 20px 28px;
+            border: 1px solid #cfdbe9;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: #f4f9ff;
+            padding: 16px 20px;
+            border-radius: 30px;
+            margin-bottom: 22px;
+        }
+
+        .rating-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rating-number {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: #1a374d;
+        }
+
+        .rating-stars i {
+            color: #f5b342;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .rating-label {
+            font-weight: 600;
+            color: #2d4f6c;
+            font-size: 0.8rem;
+        }
+
+        .sold-box {
+            border-left: 2px solid #b3c9db;
+            padding-left: 18px;
+        }
+
+        .sold-box .big-number {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #003153;
+            line-height: 1;
+        }
+
+        .sold-box .sold-text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #386581;
+        }
+
+        /* tiga item "Nantikan secepatnya" */
+        .coming-soon-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .soon-card {
+            flex: 1;
+            background: linear-gradient(145deg, #eef3f7, #ffffff);
+            border-radius: 26px;
+            padding: 14px 6px;
+            text-align: center;
+            border: 1px solid #d5e2ec;
+        }
+
+        .soon-card .game-icon {
+            font-size: 2rem;
+            margin-bottom: 6px;
+        }
+
+        .soon-card h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #173042;
+        }
+
+        .soon-card p {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #b86b2f;
+            background: #fff0db;
+            padding: 4px 6px;
+            border-radius: 40px;
+            margin-top: 6px;
+        }
+
+        /* kategori pilihan */
+        .kategori-section {
+            margin: 28px 0 16px;
+        }
+
+        .kategori-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0f2b3b;
+            margin-bottom: 15px;
+        }
+
+        .kategori-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            background: #eef3f9;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1d3b4e;
+            border: 1px solid #b9d1e6;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .chip.hemat {
+            background: #f44336;
+            color: white;
+            border: none;
+        }
+
+        /* robux flashsale */
+        .robux-flash {
+            background: #031d2b;
+            color: white;
+            border-radius: 28px;
+            padding: 22px 18px;
+            margin: 22px 0;
+            background-image: radial-gradient(circle at 70% 30%, #1b526d, #03121e);
+        }
+
+        .robux-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .robux-header h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffd966;
+        }
+
+        .price-tag {
+            background: #ffb347;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-weight: 800;
+            color: #1e2f3a;
+        }
+
+        .garansi-bar {
+            display: flex;
+            gap: 12px;
+            margin: 16px 0 12px;
+            flex-wrap: wrap;
+        }
+
+        .garansi-item {
+            background: rgba(255,255,240,0.15);
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .robux-promo {
+            display: flex;
+            justify-content: space-between;
+            background: #093142;
+            padding: 14px 18px;
+            border-radius: 24px;
+            margin: 14px 0 8px;
+            align-items: center;
+        }
+
+        .promo-desc {
+            font-weight: 600;
+        }
+
+        .promo-desc small {
+            display: block;
+            color: #b8e2f2;
+        }
+
+        .discount-badge {
+            background: #f9a826;
+            border-radius: 40px;
+            padding: 8px 16px;
+            font-weight: 700;
+        }
+
+        .ideal-for {
+            margin: 14px 0 8px;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 18px;
+            color: #d2ecff;
+        }
+
+        /* bottom nav */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            background: #ffffffd9;
+            backdrop-filter: blur(8px);
+            padding: 12px 0;
+            border-radius: 40px;
+            margin-top: 28px;
+            border: 1px solid #b8cfdc;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #284b5c;
+            font-size: 0.8rem;
+        }
+
+        .nav-item i {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .nav-item.active {
+            color: #e07c2e;
+        }
+
+        hr {
+            border: 1px dashed #e9dccd;
+            margin: 18px 0;
+        }
+
+        .small-note {
+            font-size: 0.7rem;
+            color: #776b5b;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="store-container">
+
+        <!-- FIRST CARD — RALAHY STORE (list produk persis) -->
+        <div class="card-store">
+            <div class="brand-header">
+                <h1>RALAXY STORE</h1>
+                <div class="sub-brand">LIST</div>
+            </div>
+
+            <!-- LAYANAN KAMI (list 2 kolom dengan ikon) -->
+            <div class="services-section">
+                <div class="services-title">
+                    <i class="fas fa-store-alt"></i> LAYANAN KAMI:
+                </div>
+                <div class="service-grid">
+                    <!-- menggunakan list sesuai screenshot: -->
+                    <div class="service-item"><i class="fas fa-crown"></i><span>Diamond FF & ML</span></div>
+                    <div class="service-item"><i class="fas fa-gamepad"></i><span>Top Up All Game</span></div>
+                    <div class="service-item"><i class="fas fa-cube"></i><span>Skin Minecraft</span></div>
+                    <div class="service-item"><i class="fas fa-user"></i><span>Akun FF & Roblox</span></div>
+                    <div class="service-item"><i class="fas fa-code"></i><span>Joki Game Roblox</span></div>
+                    <div class="service-item"><i class="fas fa-server"></i><span>Panel Pterodactyl</span></div>
+                    <div class="service-item"><i class="fas fa-paint-brush"></i><span>Jasa Buat Logo</span></div>
+                    <div class="service-item"><i class="fas fa-pen"></i><span>Jasa Ganti Nama APK</span></div>
+                    <div class="service-item"><i class="fas fa-chart-line"></i><span>Suntik All Sosmed</span></div>
+                    <div class="service-item"><i class="fas fa-fish"></i><span>APK AFK Fish It 🐟</span></div>
+                    <div class="service-item"><i class="fas fa-paw"></i><span>Pet Gag</span></div>
+                    <!-- sedikit tambahan biar balance, bisa ditambah jika kurang -->
+                </div>
+            </div>
+
+            <!-- fast respon + aman badges -->
+            <div class="badge-panel">
+                <div class="badge"><i class="fas fa-bolt"></i> Fast Respon</div>
+                <div class="badge green"><i class="fas fa-shield-alt"></i> Aman & Terpercaya</div>
+            </div>
+
+            <!-- payment methods -->
+            <div class="payment-methods">
+                <span><i class="fas fa-wallet"></i> Dana</span>
+                <span><i class="fab fa-google-pay"></i> Gopay</span>
+                <span><i class="fas fa-credit-card"></i> OVO</span>
+                <span><i class="fas fa-qrcode"></i> QRIS</span>
+            </div>
+
+            <!-- chat admin now -->
+            <div class="admin-cta">
+                <div class="left">
+                    <i class="fas fa-headset"></i>
+                    <h3>Minat? Chat Admin!</h3>
+                </div>
+                <div class="btn-chat"><i class="fab fa-whatsapp"></i> Sekarang</div>
+            </div>
+
+            <!-- daftar nomor HP persis dari gambar (5 nomor) -->
+            <div class="contact-list">
+                <div class="contact-item"><i class="fab fa-whatsapp"></i> +6287717468160</div>
+                <div class="contact-item"><i class="fab fa-whatsapp"></i> +6285246983848</div>
+                <div class="contact-item"><i class="fab fa-whatsapp"></i> +6285274737465</div>
+                <div class="contact-item"><i class="fab fa-whatsapp"></i> +6281239963237</div>
+                <div class="contact-item"><i class="fab fa-whatsapp"></i> +6283153803759</div>
+            </div>
+            <div class="small-note">*ketuk salin otomatis (demo UI)</div>
+        </div>
+
+        <!-- SECOND CARD — GOLROX (rating, item, kategori) -->
+        <div class="card-golrox">
+            <!-- rating dan sold -->
+            <div class="rating-row">
+                <div class="rating-box">
+                    <span class="rating-number">9.3</span>
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="rating-label">Penilaian</span>
+                    <span style="font-weight:600">34.800+ Ulasan</span>
+                </div>
+                <div class="sold-box">
+                    <div class="big-number">10.000.000+</div>
+                    <div class="sold-text">Item Terjual</div>
+                </div>
+            </div>
+
+            <!-- tiga game "Nantikan secepatnya!" -->
+            <div class="coming-soon-row">
+                <div class="soon-card">
+                    <div class="game-icon">🍇</div>
+                    <h4>Blox Fruit</h4>
+                    <p>Nantikan secepatnya!</p>
+                </div>
+                <div class="soon-card">
+                    <div class="game-icon">🌻</div>
+                    <h4>Grow A Garden</h4>
+                    <p>Segera Hadir!</p>
+                </div>
+                <div class="soon-card">
+                    <div class="game-icon">🐟</div>
+                    <h4>Fish It!</h4>
+                    <p>Segera Hadir!</p>
+                </div>
+            </div>
+
+            <!-- Kategori Pilihan -->
+            <div class="kategori-section">
+                <div class="kategori-title">📂 Kategori Pilihan <span style="font-weight:400; font-size:1rem; color:#597a8f;">Nyari Apa Nih? Pilih yang Kamu Suka!</span></div>
+                <div class="kategori-chips">
+                    <span class="chip"><i class="fas fa-shopping-bag"></i> Robux</span>
+                    <span class="chip"><i class="fas fa-tag"></i> Gamepass</span>
+                    <span class="chip"><i class="fas fa-rocket"></i> Joki</span>
+                    <span class="chip"><i class="fas fa-hourglass"></i> Segera Hadir</span>
+                    <span class="chip hemat"><i class="fas fa-bolt"></i> Hemat 50%!</span>
+                </div>
+            </div>
+
+            <!-- Robux Flash Sale -->
+            <div class="robux-flash">
+                <div class="robux-header">
+                    <h2>Beli Robux Murah!</h2>
+                    <span class="price-tag">Rp????/Rbx</span>
+                </div>
+                <p style="margin:4px 0 8px; font-size:0.9rem; opacity:0.9;">Termurah se-Universe!</p>
+                <div class="garansi-bar">
+                    <span class="garansi-item"><i class="fas fa-check-circle" style="color:#b3ffb3;"></i> GARANSI 100% PASTI AMAN</span>
+                    <span class="garansi-item"><i class="fas fa-check-circle" style="color:#b3ffb3;"></i> GARANSI 100% PASTI MASUK</span>
+                </div>
+                <div style="background:#ffd96633; padding:6px 14px; border-radius: 40px; font-weight:600
